@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/newPatient.css'%}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head> 
+<body>
+    <nav class="navbar">
+                <div>
+                    <a href="{% url 'doctorDashboard' %}"><img class="logo" src="{% static 'images/logo.png' %}"></a>
+                </div>
+                <div>
+                        <ul>
+                            <li class="location"><a href="#"><img src="{% static 'images/location.png' %}"></a></li>
+                            <li><a href="#">Sri Lanka</a></li>
+                        </ul>
+                </div>
+                <div>
+                        <ul>
+                                <li class="notification"><a href="#"><img src="{% static 'images/notification.png' %}"></a></li>
+                                <li class="email"><a href="#"><img src="{% static 'images/email.png' %}"></a></li>
+                                <li class="userProfile"><span>
+                                        {% for prof in prof%}
+                                            <img src="{{prof.image.url}}" alt="img" style="width: 50px;
+                                            height: 50px;
+                                            border-radius: 50%;
+                                            object-fit: cover;
+                                            object-position: center;
+                                            clip-path: circle(50% at center);" >
+                                        {% endfor %}
+                                    </span></a></li>
+                         </ul>
+                </div>
+    </nav>
+
+    <div class="title_searchBtn">
+        <h2 class="createNewAccountHeading">Create New Medication</h2>
+        <a href="{% url 'doctor_searchPatient' %}"> <button class="searchUserBtn">Search User</button></a>
+    </div>
+
+    <form class="" method="post">
+        {% csrf_token %}
+            <div class="cNPBodyOuter">
+                <div class="cNPBodyInner">
+                    <h2 class="bItxt">Medication Details</h2>
+                        <div class="pDetails">
+                            <label>Doctor ID Number</label>
+                            <input type="text" id="username" name="doctor_id_num" required class="textbox" placeholder="DOC001">
+                        </div>
+                        <div class="pDetails">
+                            <label>Patient ID Number</label>
+                            <input type="text" id="username" name="patient_id_num" required class="textbox" placeholder="PA001">
+                        </div>
+                        <div class="pDetails">
+                            <label>Medication Name</label>
+                            <input type="text" id="username" name="medicationName" required class="textbox" placeholder="Aspirine">
+                        </div>
+                        <div class="pDetails">
+                            <label>Dose</label>
+                            <input type="text" id="username" name="dose" required class="textbox" placeholder="600 mg">
+                        </div>
+                        <div class="pDetails">
+                            <label>Frequency</label>
+                            <input type="text" id="username" name="frequency" required class="textbox" placeholder="1 bid">
+                        </div>
+                        <div class="pDetails">
+                            <label>Date</label>
+                            <input type="text" id="username" name="date" required class="textbox" placeholder="2023-10-02">
+                            </div>
+                        <div class="pDetails">
+                            <label>Location</label>
+                            <input type="text" id="username" name="location" required class="textbox" placeholder="Colombo">
+                        </div>
+                        <div class="pDetails">
+                            <label>Comments</label>
+                            <textarea name="message" rows="7" cols="40" class="textbox" id="textArea"></textarea>
+                        </div>
+                </div>
+                <div id="newPrescription">
+                    <input type="submit" class="saveBtn" value="Save">
+                    <button type="submit" class="cancelBtn">Cancel</button>
+                </div>
+
+            </div>
+    </form>
+
+    <p class="copyRight">©2023 Electronic Health Record System, HLens. All rights reserved.</p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+   
+    <style>
+        /* Blur effect for the background */
+        .blur-background {
+            filter: blur(5px);
+        }
+    
+        /* Dialog box styles */
+        #dialog {
+            background-color: white;
+            border: none;
+            box-shadow: none;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    
+    {% if success %}
+        <script>
+            $(document).ready(function() {
+
+                $('.container').addClass('blur-background');
+    
+            
+                $("#dialog").dialog({
+                    modal: true,
+                    open: function(event, ui) {
+                        $('.ui-widget-overlay').removeClass('blur-background');
+                    }
+                });
+            });
+        </script>
+    {% endif %}
+    
+    <!-- Content of the page -->
+    <div class="container">
+        <!-- Your page content here -->
+    </div>
+    
+    <!-- Dialog box HTML -->
+    <div id="dialog" title="Success">
+        <p>Record saved successfully.</p>
+    </div>
+
+
+</body>
+</html>

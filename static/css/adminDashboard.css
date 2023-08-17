@@ -1,0 +1,377 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+html {
+    overflow: hidden;
+}
+
+/*Nav bar syle starts*/
+ul{
+    display: inline;
+}
+
+.navbar {
+    overflow: hidden;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.8fr 4fr;
+    grid-gap: 10px;
+}
+
+.logoContainer{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px rgb(235, 223, 221) solid;
+    border-right: none;
+    width: 300px;
+}
+
+.navContainer2{
+    padding-top: 3vh;
+}
+  
+.navbar ul {
+    list-style-type: none;
+}
+  
+.navbar li {
+    float: left;
+}
+  
+.navbar li a {
+    display: block;
+    color: #4B877B;
+    text-align: center;
+    text-decoration: none;
+}
+
+.logo{
+    height: 8vh;
+    width: 15vh;
+}
+
+ul{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+
+.language img{
+    padding: 0px 10px;
+    height: 35px;
+    width: 35px;
+}
+
+.notification img{
+    padding: 0px 10px;
+    height: 25px;
+    width: 25px;
+}
+
+.userProfile img{
+    padding: 0px 30px;
+    height: 4vh;
+    width: 4vh;
+}
+/*Nav bar style end*/
+
+.adminDashboardContainer{
+    display: grid;
+    grid-template-columns: 0.8fr 4fr;
+    grid-gap: 10px;
+}
+
+.adminDashboardContainer img{
+    padding: 0px 30px;
+    height: 4vh;
+    width: 4vh;
+}
+
+.sidebar{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: block;
+    margin-top: 1%;
+    padding-top: 25%;
+    height: 130%;
+    width: 300px;
+}
+
+.upperSidebar{
+    padding-top: 20px;
+}
+
+.lowerSidebar{
+    position: relative;
+    top: 35%;
+    border-radius: 10px;
+    padding-bottom: 0%;
+    padding-bottom: 5%;
+}
+
+.icon{
+    display: flex;
+    font-size: 1.9vh;
+    padding: 2% 0% 2% 6%;
+    margin: 6% 0% 0% 0%;
+}
+
+.icon img{
+    height: 22px;
+    width: 22px;
+}
+
+.icon:hover{
+    background-color: #24cbc8;
+}
+
+  
+
+#search{
+    position: relative;
+    top:35px;
+    padding: 10px 40px 10px 40px;
+    width: 30vw;
+    margin: 2% 1% 1% 1%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+#time{
+    position: relative;
+    top:35px;
+    padding: 10px 50px 10px 50px;
+    width: 10vw;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+.profileTitle {
+    margin: 2.5% 0% 1% 1%;
+    font-size: 2.5vh;
+}
+
+.upperContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 4% 4% 3% 4%;
+}
+
+.downContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 6% 4% 1% 4%;
+}
+
+.searchBox{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.patient, .doctors{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 0% 1% 0% 0%;
+    border-radius: 10px;
+    height: 27vh;
+}
+
+.containerTitle{
+    font-size: 2.4vh;
+    padding-top: 2.2vh;
+}
+
+/*style for appointments table*/
+
+.patientContainer{
+    display: grid;
+    place-items: center;
+    padding-bottom: 2vh;
+    padding-top: 2vh;
+}
+
+.patientContainer img{
+    height: 9vh;
+    width: 4vw;
+}
+
+.addNewUserBtn{
+    margin-top: 2vh;
+    height: 4vh;
+    width: 155px;
+    border: none;
+    border-radius: 6px;
+    background-color: #24cbc8;
+    color: #FFFFFF;
+}
+
+.addNewUserBtn:hover{
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1050px) {
+    html{
+        overflow: scroll;
+    }
+
+    .navbar{
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .logoContainer{
+        background: #FFFFFF;
+        box-shadow: none ;
+        border: none;
+    }
+
+    .sidebar{
+        display: none;
+    }
+
+   
+    .searchBox{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #search{
+        width: 30vw;
+        font-size: 14px;
+        margin-right: 20px;
+    }
+    
+    #time{
+        width: 25vw;
+        height: 2.5vh;
+        font-size: 14px;
+    }
+    
+    .profileTitle{
+        margin: 8% 0% 1% 5%;
+    }
+
+    .upperContainer, .downContainer{
+        display: flex;
+        justify-content: space-between;
+        margin-left: 10%;
+        margin-right: auto;
+    }
+
+    .patient, .doctors{
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        width: 30vw;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .patientContainer img{
+        height: 65px;
+        width: 50px;
+    }  
+}
+
+
+@media only screen and (max-width: 480px) {
+
+    .adminDashboardContainer{
+        display: flex;
+        justify-content: center;
+    }
+
+    .logo{
+        height: 8vh;
+        width: 15vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar {
+        width: 100%;
+        display: flex;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logoContainer{
+        
+        width: 150px;
+    }
+    .navContainer2{
+        padding-top: 0vh;
+    }
+
+    .language img{
+        display: none;
+    }
+    
+    .notification img{
+        padding: 0px ;
+        height: 20px;
+        width: 20px;
+    }
+
+    .searchBox{
+        display: block;
+    }
+
+
+    #search{
+        width: 55vw;
+        margin-top: 80px;
+    }
+
+    #time{
+        display: none;
+    }
+
+    .profileTitle{
+        margin: 22% 0% 1% 5%;
+        text-align: center;
+    }
+    
+    .upperContainer, .downContainer{
+        display: block;
+        margin-left: 15%;
+        margin-right: auto;
+    }
+
+    .patient, .doctors{
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        width: 60vw;
+        margin: 5% 0% 5% 0%;
+        border-radius: 10px;
+    }
+
+    .patientContainer img{
+        height: 9vh;
+        width: 18vw;
+    }
+  
+}

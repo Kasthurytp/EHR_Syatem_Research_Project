@@ -1,0 +1,143 @@
+{% extends 'doctorBase.html' %}
+{% load static %}
+
+{% block title %}
+    Doctor Dashboard
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/doctorDashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div class="adminDashboardContainer">
+        <!--Sildebar-->
+        <div class="sidebar">
+            <div class="upperSidebar">
+                <div class="icon">
+                    <span><img src="{% static 'images/dashboard.png' %}"></span>
+                    <span>Dashboard</span>
+                </div>
+
+                <a href="{% url 'doctor_searchPatient' %}" style="text-decoration:none;color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/appointments.png' %}"></span>
+                        <span>Patients</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'doctorAppointment' %}" style="text-decoration:none;color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/bills.png' %}"></span>
+                        <span>Appointments</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'doctorMedicalBill' %}" style="text-decoration:none;color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/records.png' %}"></span>
+                        <span>Medical Bills</span>
+                    </div>
+                </a>
+
+            </div>
+            <div class="lowerSidebar">
+                <div class="icon">
+                    <span><img src="{% static 'images/setting.png' %}"></span>
+                    <span>Setting</span>
+                </div>
+                <a href="{% url 'login' %}" style="color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/logout.png' %}"></span>
+                        <span>Log out</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div>
+            <!--Sildebar end-->
+            <div class="searchBox">
+                <span> <input type="text" id="search" name="username" required class="searchBox" placeholder="Search....."></span>
+                <span> <input type="text" id="time" name="date&time" required class="searchBox" placeholder="{{ formatted_datetime }}"></button></span> 
+            </div>
+
+            <div class="profileTitle">
+                <h2>Dashboard</h2>
+            </div>
+
+            <!--upper container start-->
+            <div class="upperContainer" >
+                <div class="patient">
+                    <div class="patientContainer">
+                            <img src="{% static 'images/prescription.png' %}">
+                            <h1 class="containerTitle">Prescription</h1>
+                            <form action="{% url 'newPrescription' %}" method="get">
+                                <button class="addNewUserBtn">Add New Prescription</button>
+                            </form>
+                    </div>
+                </div>
+                <!--Medical records end-->
+                <!--Medical Bills-->
+                <div class="patient">
+                        <div class="patientContainer">
+                                <img src="{% static 'images/deadline.png' %}">
+                                <h1 class="containerTitle">Appointments</h1>
+                                <form action="{% url 'newAppointment' %}" method="get">
+                                    <button class="addNewUserBtn">Add New Appointment</button>
+                                </form>
+                        </div>
+                </div>
+                <!--Medical Bills End-->
+                <!--Medications-->
+                <div class="patient">
+                        <div class="patientContainer">
+                                <img src="{% static 'images/medicalRecord.png' %}">
+                                <h1 class="containerTitle">Medical Records</h1>
+                                <form action="{% url 'newMedicalRecord' %}" method="get">
+                                    <button class="addNewUserBtn">Add New Medical Record</button>
+                                </form>
+                        </div>
+                </div>
+                <!--Medications-->
+            </div>
+            <!--upper container end-->
+
+            <!--Down Conatainers-->
+            <div class="downContainer">
+                <!--Medical records-->
+                <div class="patient">
+                    <div class="patientContainer">
+                            <img src="{% static 'images/payment.png' %}">
+                            <h1 class="containerTitle">Medical Bills</h1>
+                            <form action="{% url 'newMedicalBill' %}" method="get">
+                                <button class="addNewUserBtn">Add Medical Bill</button>
+                            </form>
+                    </div>
+                </div>
+                <!--Medical records end-->
+                <!--Medical Bills-->
+                <div class="doctors">
+                        <div class="patientContainer">
+                                <img src="{% static 'images/medicine.png' %}">
+                                <h1 class="containerTitle">Medications</h1>
+                                <form action="{% url 'newMedication' %}" method="get">
+                                    <button class="addNewUserBtn">Add New Medication</button>
+                                </form>
+                        </div>
+                </div>
+                <!--Medical Bills End-->
+                <!--Medications-->
+                <div class="patient">
+                        <div class="patientContainer">
+                                <img src="{% static 'images/medical-report.png' %}">
+                                <h1 class="containerTitle">Reports</h1>
+                                <form action="{% url 'newReport' %}" method="get">
+                                    <button class="addNewUserBtn">Add New Report</button>
+                                </form>
+                        </div>
+                </div>
+                <!--Medications-->
+            </div>
+            <!--Down Conatainers End-->
+{% endblock %}

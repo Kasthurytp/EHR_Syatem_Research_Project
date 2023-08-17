@@ -1,0 +1,43 @@
+<!-- adminBase.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <!-- Common CSS files -->
+    <link rel="stylesheet" href="{% static 'css/adminDashboard.css'%}">
+
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <!--Nav Bar start-->
+    <nav class="navbar">
+            <div class="logoContainer">
+                <a href="{% url 'adminDashboard' %}"><img class="logo" src="{% static 'images/logo.png' %}"></a>
+            </div>
+            <div class="navContainer2">
+                    <ul>
+                            <li class="notification"><a href="#"><img src="{% static 'images/notification.png' %}"></a></li>
+                            <li class="language"><a href="#"><img src="{% static 'images/email.png' %}"></a></li>
+                            <li class="userProfile"><span>
+                                    {% for prof in prof%}
+                                        <img src="{{prof.image.url}}" alt="img" style="width: 50px;
+                                        height: 50px;
+                                        border-radius: 50%;
+                                        object-fit: cover;
+                                        object-position: center;
+                                        clip-path: circle(50% at center);" >
+                                    {% endfor %}
+                                </span></a></li>
+                     </ul>
+            </div>
+        </nav>
+        <!--Nav Bar end-->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Common footer, etc. -->
+</body>
+</html>

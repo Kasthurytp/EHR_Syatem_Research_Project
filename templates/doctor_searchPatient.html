@@ -1,0 +1,104 @@
+{% extends 'doctorBase.html' %}
+{% load static %}
+
+{% block title %}
+    users
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/searchUser.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form class="" method="post">
+        {% csrf_token %}
+        <div>
+            <h2 class="hospitalName">Welcome Again !</h2>
+            <div class="dbBody">
+                <span> <input type="text" id="search_id" name="search_id" required class="searchBox" placeholder="Enter Patient ID..."></button></span>
+                <span> <button type="submit" class="searchBtn">Search</button></span>
+            </div>
+        </div>
+    </form>
+
+    <input class="hrLine" type="text" id="username" name="username" required class="searchBox">
+
+    <p class="dashPara">
+        Welcome to the Sri Lanka EHR System! Use the search bar below to find specific doctors and their 
+        related information. Simply enter the unique doctor ID or patient ID.
+        The system ensures the privacy and security of the doctors' and patient's data by encrypting it,
+        and you can conveniently access the decrypted information here. 
+        Start searching and get instant access to the necessary details of doctors within the Sri Lanka healthcare network.
+    </p>
+
+    <!--Seach patient-->
+    {% if patient %}
+    <div class="searchUserContainer" id="container1">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Sex</th>
+                        <th>NIC</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Primary Phone</th>
+                        <th>Secondary Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="appointment">{{ patient.id_num }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.first_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.last_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.dob }}</p>
+                        <td>
+                            <p class="appointment">{{ patient.sex }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.nic }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.mobile_number }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.email }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.address }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.primary_phone }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.secondary_phone }}</p>
+                        </td>
+                        <td>
+                            <a class="viewIcon" href="{% url 'admin_searchUserDashboard' patient.id_num %}"><img src="{% static 'images/view.png' %}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <h2>Data not found !</h2>
+        {% endif %}
+
+    <p class="copyRight">©2023 Electronic Health Record System, HLens. All rights reserved.</p>   
+        
+</body>
+</html>
+
+{% endblock %}

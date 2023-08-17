@@ -1,0 +1,138 @@
+{% extends 'doctorBase.html' %}
+{% load static %}
+
+{% block title %}
+    Medical Bills
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="adminDashboardContainer">
+    <!--Sildebar-->
+    <div class="sidebar">
+        <div class="upperSidebar">
+            <a href="{% url 'doctorDashboard' %}" style="text-decoration:none;color:black;">
+                <div class="icon">
+                    <span><img src="{% static 'images/dashboard.png' %}"></span>
+                    <span>Dashboard</span>
+                </div>
+            </a>
+
+            <a href="{% url 'doctor_searchPatient' %}" style="text-decoration:none;color:black;">
+                <div class="icon">
+                    <span><img src="{% static 'images/appointments.png' %}"></span>
+                    <span>Patients</span>
+                </div>
+            </a>
+
+            <a href="{% url 'doctorAppointment' %}" style="text-decoration:none;color:black;">
+                <div class="icon">
+                    <span><img src="{% static 'images/bills.png' %}"></span>
+                    <span>Appointments</span>
+                </div>
+            </a>
+
+            <a href="{% url 'doctorMedicalBill' %}" style="text-decoration:none;color:black;">
+                <div class="icon">
+                    <span><img src="{% static 'images/records.png' %}"></span>
+                    <span>Medical Bills</span>
+                </div>
+            </a>
+
+        </div>
+        <div class="lowerSidebar">
+            <div class="icon">
+                <span><img src="{% static 'images/setting.png' %}"></span>
+                <span>Setting</span>
+            </div>
+            <a href="{% url 'login' %}" style="color:black;">
+                <div class="icon">
+                    <span><img src="{% static 'images/logout.png' %}"></span>
+                    <span>Log out</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div>
+        <!--Sidebar starts-->
+            <!--search box and date & time box starts-->
+            <div class="searchBox">
+                <span> <input type="text" id="search" name="username" required class="searchBox" placeholder="Search....."></button></span>
+                <span> <input type="text" id="time" name="date&time" required class="searchBox" placeholder="{{ formatted_datetime }}"></button></span> 
+            </div>
+            <!--search box and date & time box ends-->
+            <!--Appointment Title starts-->
+            <div class="profileTitle_newAppointmentBtn">
+                <div class="profileTitle">
+                    <h2>Medical Bills</h2>
+                </div>
+                <div class="profileTitle">
+                    <form action="{% url 'doctorBillPayment' %}" method="get">
+                        <button class="browseAllBtn">Pay Bill</button>
+                    </form>
+                </div>
+            </div>
+            <!--Appointment Title ends-->
+
+    <!--Appointment body starts-->
+    <div class="appointmentTable">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#</th>
+                        <th>Doctor ID</th>
+                        <th>Patient ID</th>
+                        <th>Date</th>
+                        <th>Visit Type</th>
+                        <th>Location</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.id}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.patient_id_num}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.service_detail}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.date}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.location}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.payment_amount}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for medicalBills in medicalBills%}
+                                <p class="appointment">{{medicalBills.payment_status}}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Appointment Container ends-->
+{% endblock %}

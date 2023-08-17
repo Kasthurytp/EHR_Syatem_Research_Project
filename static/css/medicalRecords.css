@@ -1,0 +1,264 @@
+
+html {
+    overflow: hidden;
+}
+
+/*Nav bar syle starts*/
+ul{
+    display: inline;
+}
+
+.navbar {
+    overflow: hidden;
+    height: 5.5vh;
+    justify-content: space-between;
+    margin: 1% 0% 0% 0%;
+    position: fixed;
+    width: 100%;
+}
+  
+.navbar ul {
+    list-style-type: none;
+}
+  
+.navbar li {
+    float: left;
+}
+  
+.navbar li a {
+    display: block;
+    color: #4B877B;
+    text-align: center;
+    text-decoration: none;
+}
+  
+
+.logo{
+    height: 8vh;
+    width: 15vh;
+    margin-top: 1vh;
+    margin-left: 50%;
+}
+
+.logohr{
+    border-color: #ffffff;
+    border-width: 0.01vh;
+}
+
+ul{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+nav{
+      display: flex;
+      align-items: center;
+}
+
+.language img{
+      padding: 0px 10px;
+      height: 35px;
+      width: 35px;
+}
+
+.userProfile img{
+    padding: 0px 30px;
+    height: 4vh;
+    width: 4vh;
+    margin-right: 2vw;
+}
+/*Nav bar style end*/
+
+.userProfileContainer{
+    display: grid;
+    grid-template-columns: 0.8fr 4fr;
+    grid-gap: 10px;
+}
+
+.userProfileContainer img{
+    padding: 0px 30px;
+    height: 4vh;
+    width: 4vh;
+}
+
+.sidebar{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: block;
+    margin-top: 1%;
+    padding-top: 30%;
+    height: 132%;
+}
+
+.lowerSidebar{
+    position: relative;
+    top: 40%;
+    border-radius: 10px;
+    padding-bottom: 0%;
+    padding-bottom: 5%;
+}
+
+.icon, .lIcon{
+    display: flex;
+    font-size: 1.95vh;
+    padding: 2% 0% 0% 6%;
+    margin: 6% 0% 10% 0%;
+}
+
+.icon a{
+    color: black;
+    text-decoration: none;
+}
+
+.icon img{
+    height: 22px;
+    width: 22px;
+}
+
+.icon:hover{
+    background-color: #24cbc8;
+}
+
+.lIcon img{
+    height: 22px;
+    width: 22px;
+}
+
+.lIcon:hover{
+    color: #24cbc8;
+}
+
+#search{
+    position: relative;
+    top:35px;
+    padding: 10px 40px 10px 40px;
+    width: 30vw;
+    margin: 3% 1% 1% 1%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+#time{
+    position: relative;
+    top:35px;
+    padding: 10px 50px 10px 50px;
+    width: 10vw;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+.profileTitle_newAppointmentBtn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.profileTitle{
+    margin: 2.5% 0% 0% 1%;
+    font-size: 2.5vh;
+}
+
+.browseAllBtn{
+    margin: 2vh 5vh 0vh 0vh;
+    padding: 1vh 2vw;
+    border: none;
+    border-radius: 6px;
+    background-color: #24cbc8;
+    box-shadow: 0px 4px 4px rgba(0, 0.1, 0.4, 0.1);
+    color: #FFFFFF;
+}
+
+.browseAllBtn:hover{
+    cursor: pointer;
+}
+
+table{
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0.1, 0.4, 0.1);
+    border-radius: 10px;
+    border: none;
+    height: 100%;
+    padding-top: 2vh;
+    width: 95%;
+}
+
+th{
+    padding: 0.5vw 2vw 0.5vw 2vw;
+    background-color: #f2f2f2;
+}
+
+td{
+    padding: 0vw 2vw 0 2vw;
+}
+
+td p{
+    padding: 1vw 0vw 0 0vw;
+}
+
+@media only screen and (max-width: 1050px) {
+    html{
+        overflow: scroll;
+    }
+
+    .navbar{
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+    }
+
+    .sidebar{
+        display: none;
+    }
+
+   
+    .searchBox{
+        display: flex;
+    }
+
+    #search{
+        width: 30vw;
+        margin: 10% 5% 1% 5%;
+    }
+    
+    #time{
+        width: 20vw;
+        height: 2.5vh;
+        margin: 10% 0% 1% 15%;
+    }
+    
+    .profileTitle{
+        margin: 8% 0% 1% 5%;
+    }
+
+    .upperContainer{
+        display: block;
+    }
+
+    .downContainer{
+        display: block;
+    }
+
+    .downContainer{
+        display: block;
+    }
+
+    .medicalBills, .medications, .medicalRecords, .appointments, .profileDetails{
+        width: 120%;
+        margin: 0% 0% 3% 0%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .browseAllBtn{
+        width: 12vw;
+    }   
+}

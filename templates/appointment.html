@@ -1,0 +1,140 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="adminDashboardContainer">
+        <!--Sildebar-->
+        <div class="sidebar">
+            <div class="upperSidebar">
+                <a href="{% url 'adminDashboard' %}" style="text-decoration:none; color:black;"> 
+                    <div class="icon">
+                        <span><img src="{% static 'images/dashboard.png' %}"></span>
+                        <span>Dashboard</span>
+                    </div>
+                </a> 
+
+                <a href="{% url 'users' %}" style="text-decoration:none; color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/appointments.png' %}"></span>
+                        <span>Users</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'appointment' %}" style="text-decoration:none; color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/bills.png' %}"></span>
+                        <span>Appointments</span>
+                    </div>
+                </a>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/records.png' %}"></span>
+                    <span>Billing</span>
+                </div>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/medications.png' %}"></span>
+                    <span>Reports</span>
+                </div>
+            </div>
+            <div class="lowerSidebar">
+                <div class="icon">
+                    <span><img src="{% static 'images/setting.png' %}"></span>
+                    <span>Setting</span>
+                </div>
+
+                <a href="{% url 'login' %}" style="color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/logout.png' %}"></span>
+                        <span>Log out</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div>
+        <!--Sidebar starts-->
+            <!--search box and date & time box starts-->
+            <div class="searchBox">
+                <span> <input type="text" id="search" name="username" required class="searchBox" placeholder="Search....."></button></span>
+                <span> <input type="text" id="time" name="date&time" required class="searchBox" placeholder="{{ formatted_datetime }}"></button></span> 
+            </div>
+            <!--search box and date & time box ends-->
+            <!--Appointment Title starts-->
+            <div class="profileTitle_newAppointmentBtn">
+                <div class="profileTitle">
+                    <h2>Appointments</h2>
+                </div>
+                <div class="profileTitle">
+                    <form action="{% url 'newAppointment' %}" method="get">
+                        <button class="browseAllBtn">Create New Appointment</button>
+                    </form>
+                </div>
+            </div>
+            <!--Appointment Title ends-->
+
+    <!--Appointment body starts-->
+    <div class="appointmentTable">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#</th>
+                        <th>Doctor ID</th>
+                        <th>Patient ID</th>
+                        <th>Date</th>
+                        <th>Visit Type</th>
+                        <th>Location</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.id}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.doctor_id}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.patient_id}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.date}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.visit_type}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.location}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointments in appointments%}
+                                <p class="appointment">{{appointments.comments}}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Appointment Container ends-->
+{% endblock %}

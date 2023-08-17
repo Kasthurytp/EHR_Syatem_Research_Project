@@ -1,0 +1,151 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+    users
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/users.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+    <!--Appointment Container starts-->
+    <div class="userProfileContainer">
+         <!--Sildebar-->
+         <div class="sidebar">
+                <div class="upperSidebar">
+                    <a href="{% url 'adminDashboard' %}" style="text-decoration:none;color:black;">
+                        <div class="icon">
+                            <span><img src="{% static 'images/dashboard.png' %}"></span>
+                            <span>Dashboard</span>
+                        </div>
+                    </a>    
+    
+                    <a href="{% url 'users' %}" style="text-decoration:none;color:black;">
+                        <div class="icon">
+                            <span><img src="{% static 'images/appointments.png' %}"></span>
+                            <span>Users</span>
+                        </div>
+                    </a>
+    
+                    <a href="{% url 'appointment' %}" style="text-decoration:none; color:black;">
+                        <div class="icon">
+                            <span><img src="{% static 'images/bills.png' %}"></span>
+                            <span>Appointments</span>
+                        </div>
+                    </a>
+    
+                    <div class="icon">
+                        <span><img src="{% static 'images/records.png' %}"></span>
+                        <span>Billing</span>
+                    </div>
+    
+                    <div class="icon">
+                        <span><img src="{% static 'images/medications.png' %}"></span>
+                        <span>Reports</span>
+                    </div>
+                </div>
+                <div class="lowerSidebar">
+                    <div class="icon">
+                        <span><img src="{% static 'images/setting.png' %}"></span>
+                        <span>Setting</span>
+                    </div>
+                    <a href="{% url 'login' %}" style="color:black;">
+                        <div class="icon">
+                            <span><img src="{% static 'images/logout.png' %}"></span>
+                            <span>Log out</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <!--Sildebar end-->
+            <!--search box and date & time box starts-->
+            <div class="searchBox">
+                <span> <input type="text" id="search" name="username" required class="searchBox" placeholder="Search....."></button></span>
+                <span> <input type="text" id="time" name="date&time" required class="searchBox" placeholder="{{ formatted_datetime }}"></button></span> 
+            </div>
+            <!--search box and date & time box ends-->
+            <!--Appointment Title starts-->
+            <div class="profileTitle_newAppointmentBtn">
+                <div class="profileTitle">
+                    <h2>Users</h2>
+                </div>
+            </div>
+            <!--Appointment Title ends-->
+            <div class="usersNavTab">
+                <ul>
+                    <li id="item1" class="active">Patients</li>
+                    <li id="item2">Doctors</li>
+                    <li id="item3">Nurses</li>
+                </ul>
+            </div>
+
+    <!--Appointment body starts-->
+    <div id="content">
+       
+    </div>
+    <!--Appointment Container ends-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // Get all the <li> elements
+        var listItems = document.querySelectorAll('li');
+
+        // Add a click event listener to each <li> element
+        listItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Remove the 'clicked' class from all <li> elements
+            listItems.forEach(function(item) {
+            item.classList.remove('clicked');
+            });
+
+            // Add the 'clicked' class to the clicked <li> element
+            this.classList.add('clicked');
+        });
+        });
+
+        //load conatiner based on selected item
+        $(document).ready(function() {
+            function loadItem1Content() {
+                $.ajax({
+                  url: "{% url 'patients' %}", // Replace with the URL of the Django view that returns the content for item 1
+                  success: function(response) {
+                    var container = $(response).find("#container1"); // Replace "#container2" with the appropriate selector for your container
+                    $("#content").html(container);
+                  }
+                });
+              }
+            
+                $("#item1").click(function() {
+                    loadItem1Content();
+                });
+            
+                // Load item 1 content when the page loads
+                loadItem1Content();
+
+            $("#item2").click(function() {
+                $.ajax({
+                  url: "{% url 'doctors' %}",  // Replace with the URL of the Django view that returns the content for page 1
+                  success: function(response) {
+                    var container = $(response).find("#container1"); // Replace "#container1" with the appropriate selector for your container
+                    $("#content").html(container);
+                  }
+                });
+              }); 
+
+            $("#item3").click(function() {
+                $.ajax({
+                  url: "{% url 'nurses' %}",  // Replace with the URL of the Django view that returns the content for page 1
+                  success: function(response) {
+                    var container = $(response).find("#container1"); // Replace "#container1" with the appropriate selector for your container
+                    $("#content").html(container);
+                  }
+                });
+              }); 
+          });
+    </script>
+{% endblock %}

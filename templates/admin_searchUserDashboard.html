@@ -1,0 +1,325 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+    users
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/userProfile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="userProfileContainer">
+        <div class="sidebar">
+            <div class="upperSidebar">
+                <a href="{% url 'adminDashboard' %}" style="text-decoration:none; color:black;"> 
+                    <div class="icon">
+                        <span><img src="{% static 'images/dashboard.png' %}"></span>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'users' %}" style="text-decoration:none; color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/appointments.png' %}"></span>
+                        <span>Users</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'appointment' %}" style="text-decoration:none; color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/bills.png' %}"></span>
+                        <span>Appointments</span>
+                    </div>
+                </a>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/records.png' %}"></span>
+                    <span>Billing</span>
+                </div>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/medications.png' %}"></span>
+                    <span>Reports</span>
+                </div>
+            </div>
+            <div class="lowerSidebar">
+                <div class="icon">
+                    <span><img src="{% static 'images/setting.png' %}"></span>
+                    <span>Setting</span>
+                </div>
+                <a href="{% url 'login' %}" style="color:black;">
+                    <div class="icon">
+                        <span><img src="{% static 'images/logout.png' %}"></span>
+                        <span>Log out</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div>
+            <div class="searchBox">
+                <span> <input type="text" id="search" name="username" required class="searchBox" placeholder="Search....."></button></span>
+                <span> <input type="text" id="time" name="date&time" required class="searchBox" placeholder="{{ formatted_datetime }}"></button></span> 
+            </div>
+
+            <div class="profileTitle">
+                <h2>Profile</h2>
+            </div>
+            
+            <!--Personal details-->
+            {% if doctor %}
+            <div class="upperContainer">
+                <div class="profileDetails">
+                    <div class="profileDetailsLeft">
+                            <span>
+                                {% for prof in prof%}
+                                    <img src="{{prof.image.url}}" alt="img" style="width: 120px;
+                                    height: 120px;
+                                    border-radius: 50%;
+                                    object-fit: cover;
+                                    object-position: center;
+                                    clip-path: circle(50% at center);" >
+                                {% endfor %}
+                            </span>
+                            <span class="profileDetailsLeftInfo">
+                                <ul>
+                                        <li>Email : </li>
+                                        <li>Mobile Number : </li>
+                                        <li>Primary Phone : </li>
+                                        <li>Secondary Phone : </li>
+                                </ul>
+
+                                <ul>
+                                    
+                                    <li>{{doctor.email}}</li>
+                                    <li>{{doctor.mobile_number}}</li>
+                                    <li>{{doctor.primary_phone}}</li>
+                                    <li>{{doctor.secondary_phone}}</li>
+                                    
+                                </ul>
+                            </span>
+                    </div>
+                    <div class="profileDetailsRight">
+                        <ul>
+                            <li>{{ doctor.first_name }}</li>
+                            
+                            <li></li>
+                            <li>ID Number: </li>
+                            <li>First Name : </li>
+                            <li>Last Name : </li>
+                            <li>DOB : </li>
+                            <li>Sex : </li>
+                            <li>NIC : </li>
+                            <li>Address : </li>
+                        </ul>
+
+                        <ul>
+                                <li><button class="browseAllBtn">Active</button></li>
+                               
+                                    <li>{{doctor.id_num}}</li>
+                                    <li>{{doctor.first_name}}</li>
+                                    <li>{{doctor.last_name}}</li>
+                                    <li>{{doctor.dob}}</li>
+                                    <li>{{doctor.sex}}</li>
+                                    <li>{{doctor.nic}}</li>
+                                    <li>{{doctor.address}}</li>
+                              
+                            </ul>
+                    </div>
+                </div>
+
+                <div class="appointments">
+                    <span class="appointmentsTitle">
+                            <h1 class="containerTitle">Appointments</h1>
+                        <button class="browseAllBtn">Browse All</button>
+                    </span>
+                    
+                    <div class="appointmentTable">
+                        <table>
+                                <thead>
+                                    <tr>
+                                        <th>Patient ID</th>
+                                        <th>Date</th>
+                                        <th>Visit Type</th>
+                                        <th>Location</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {% for appointment in appointments %}
+                                                <p class="appointment">{{ appointment.patient_id }}</p>            
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for appointment in appointments %}
+                                                <p class="appointment">{{ appointment.date }}</p>            
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for appointment in appointments %}
+                                                <p class="appointment">{{ appointment.visit_type }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for appointment in appointments %}
+                                                 <p class="appointment"> {{ appointment.location }}</p>
+                                            {% endfor %}</td>
+                                        <td>
+                                            {% for appointment in appointments %}
+                                                <p class="appointment">{{ appointment.comments }}</p>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+
+            <!--Down Conatainers-->
+            <div class="downContainer">
+                <!--Medical records-->
+                <div class="medicalRecords">
+                    <span class="medicalRecordsTitle">
+                            <h1 class="containerTitle">Medical Records</h1>
+                        <button class="browseAllBtn">Browse All</button>
+                    </span>
+                    <div class="medicalRecordsTable">
+                        <table>
+                                <thead>
+                                    <tr>
+                                        <th>Patient ID</th>
+                                        <th>Date</th>
+                                        <th>Comments</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {% for medicalRecord in medicalRecords %}
+                                                 <p class="appointment">{{ medicalRecord.patient_id_num }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medicalRecord in medicalRecords %}
+                                                 <p class="appointment">{{ medicalRecord.date }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medicalRecord in medicalRecords %}
+                                                <p class="appointment">{{ medicalRecord.message }}</p>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+                <!--Medical records end-->
+                <!--Medical Bills-->
+                <div class="medicalBills">
+                    <span class="medicalBillsTitle">
+                            <h1 class="containerTitle">Medical Bills</h1>
+                        <button class="browseAllBtn">Browse All</button>
+                    </span>
+
+                    <div class="medicalBillsTable">
+                        <table>
+                                <thead>
+                                    <tr>
+                                        <th>Patient ID</th>
+                                        <th>Date</th>
+                                        <th>Service detail</th>
+                                        <th>Payment Amount</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {% for medicalBill in medicalBills %}
+                                                <p class="appointment">{{ medicalBill.patient_id_num }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medicalBill in medicalBills %}
+                                                <p class="appointment">{{ medicalBill.date }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medicalBill in medicalBills %}
+                                                <p class="appointment">{{ medicalBill.service_detail }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medicalBill in medicalBills %}
+                                                <p class="appointment">{{ medicalBill.payment_amount }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medicalBill in medicalBills %}
+                                                <p class="appointment">{{ medicalBill.payment_status }}</p>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+                <!--Medical Bills End-->
+                <!--Medications-->
+                <div class="medications">
+                    <span class="medicationsTitle">
+                        <h1 class="containerTitle">Medications</h1>
+                        <button class="browseAllBtn">Browse All</button>
+                    </span>
+
+                    <div class="medicationsTable">
+                        <table>
+                                <thead>
+                                    <tr>
+                                        <th>Patient ID</th>
+                                        <th>Medication Name</th>
+                                        <th>Dose</th>
+                                        <th>Frequency</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {% for medication in medications %}
+                                                <p class="appointment">{{ medication.patient_id_num }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medication in medications %}
+                                                <p class="appointment">{{ medication.medicationName }}</p>
+                                            {% endfor %}
+                                        </td>
+                                        <td>
+                                            {% for medication in medications %}
+                                                <p class="appointment">{{ medication.dose }}</p>
+                                            {% endfor %}
+                                        <td>
+                                            {% for medication in medications %}
+                                                <p class="appointment">{{ medication.frequency }}</p>
+                                            {% endfor %}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+                <!--Medications-->
+            </div>
+            <!--Down Conatainers End-->
+
+        </div>
+        {% endif %}
+    </div>        
+    {% endblock %}

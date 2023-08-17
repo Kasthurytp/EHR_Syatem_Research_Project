@@ -1,0 +1,277 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+    users
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/searchUser.css' %}">
+{% endblock %}
+
+{% block content %}
+    <form class="" method="post">
+        {% csrf_token %}
+        <div>
+            <h2 class="hospitalName">Welcome Again !</h2>
+            <div class="dbBody">
+                <span> <input type="text" id="search_id" name="search_id" required class="searchBox" placeholder="Enter User ID..."></button></span>
+                <span> <button type="submit" class="searchBtn">Search</button></span>
+            </div>
+        </div>
+    </form>
+
+    <input class="hrLine" type="text" id="username" name="username" required class="searchBox">
+
+    <p class="dashPara">
+        Welcome to the Sri Lanka EHR System! Use the search bar below to find specific doctors and their 
+        related information. Simply enter the unique doctor ID or patient ID.
+        The system ensures the privacy and security of the doctors' and patient's data by encrypting it,
+        and you can conveniently access the decrypted information here. 
+        Start searching and get instant access to the necessary details of doctors within the Sri Lanka healthcare network.
+    </p>
+
+    {% if doctor %}
+    <!--Appointment body starts-->
+    <div class="searchUserContainer" id="container1">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Sex</th>
+                        <th>NIC</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Primary Phone</th>
+                        <th>Secondary Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="appointment">{{ doctor.id_num }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.first_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.last_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.dob }}</p>
+                        <td>
+                            <p class="appointment">{{ doctor.sex }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.nic }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.mobile_number }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.email }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.address }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.primary_phone }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ doctor.secondary_phone }}</p>
+                        </td>
+                        <td>
+                            <a class="viewIcon" href="{% url 'admin_searchUserDashboard' doctor.id_num %}"><img src="{% static 'images/view.png' %}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        {% endif %}
+
+
+    <!--Seach patient-->
+    {% if patient %}
+    <div class="searchUserContainer" id="container1">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Sex</th>
+                        <th>NIC</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Primary Phone</th>
+                        <th>Secondary Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="appointment">{{ patient.id_num }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.first_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.last_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.dob }}</p>
+                        <td>
+                            <p class="appointment">{{ patient.sex }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.nic }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.mobile_number }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.email }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.address }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.primary_phone }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ patient.secondary_phone }}</p>
+                        </td>
+                        <td>
+                            <a class="viewIcon" href="{% url 'admin_searchUserDashboard' patient.id_num %}"><img src="{% static 'images/view.png' %}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        {% endif %}
+
+
+    {% if nurse %}
+    <div class="searchUserContainer" id="container1">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Sex</th>
+                        <th>NIC</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Primary Phone</th>
+                        <th>Secondary Phone</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="appointment">{{ nurse.id_num }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.first_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.last_name }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.dob }}</p>
+                        <td>
+                            <p class="appointment">{{ nurse.sex }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.nic }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.mobile_number }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.email }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.address }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.primary_phone }}</p>
+                        </td>
+                        <td>
+                            <p class="appointment">{{ nurse.secondary_phone }}</p>
+                        </td>
+                        <td>
+                            <a class="viewIcon" href="{% url 'admin_searchUserDashboard' nurse.id_num %}"><img src="{% static 'images/view.png' %}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        {% endif %}
+
+    <button type="submit" class="createBtn" id="myBtn">Create New Account</button>
+
+
+    <p class="copyRight">©2023 Electronic Health Record System, HLens. All rights reserved.</p>
+
+    <!--Pop up window-->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <a href="{% url 'adminDashboard' %}"><img class="logoInsidePopup" src="{% static 'images/logo.png' %}"></a>
+            <p class="popupTxt">
+                    The system ensures the privacy and security of the doctors' and patient's data by encrypting it,
+                    and you can quickly create account here.
+            </p>
+            <div class="popupBtn">
+                <button type="submit" class="doctorBtn" id="myBtn" onclick="location.href = '/newDoctor'">Doctor</button>
+                <button type="submit" class="patientBtn" id="myBtn" onclick="location.href = '/newPatient'">Patient</button>
+            </div>
+        </div>
+    </div>
+          
+         
+    <script>
+        // Get the modal and the button that opens it
+        var modal = document.getElementById("myModal");
+         var btn = document.getElementById("myBtn");
+              
+        // Get the close button
+        var span = document.getElementsByClassName("close")[0];
+              
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+              
+        // When the user clicks on the close button, close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+              
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+
+{% endblock %}

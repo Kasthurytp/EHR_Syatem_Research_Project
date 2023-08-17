@@ -1,0 +1,320 @@
+.userProfileContainer{
+    display: grid;
+    grid-template-columns: 0.8fr 4fr;
+    grid-gap: 10px;
+}
+
+.userProfileContainer img{
+    padding: 0px 30px;
+    height: 4vh;
+    width: 4vh;
+}
+
+.sidebar{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: block;
+    margin-top: 1%;
+    padding-top: 25%;
+    height: 130%;
+    width: 300px;
+}
+
+.upperSidebar{
+    padding-top: 20px;
+}
+
+.lowerSidebar{
+    position: relative;
+    top: 35%;
+    border-radius: 10px;
+    padding-bottom: 0%;
+    padding-bottom: 5%;
+}
+
+.icon{
+    display: flex;
+    font-size: 1.9vh;
+    padding: 2% 0% 2% 6%;
+    margin: 6% 0% 0% 0%;
+}
+
+.icon img{
+    height: 22px;
+    width: 22px;
+}
+
+.icon:hover{
+    background-color: #24cbc8;
+}
+
+#search{
+    position: relative;
+    top:35px;
+    padding: 10px 40px 10px 40px;
+    width: 30vw;
+    margin: 2% 1% 1% 1%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+#time{
+    position: relative;
+    top:35px;
+    padding: 10px 50px 10px 50px;
+    width: 10vw;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+.profileTitle{
+    margin: 2.5% 0% 1% 1%;
+    font-size: 2.5vh;
+}
+
+.upperContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 2% 1% 1% 1%;
+    font-size: 14px;
+}
+
+.profileDetails{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0% 2% 1% 0%;
+    justify-content: space-around;
+    
+}
+
+.profileDetailsLeftInfo{
+    display: flex;
+}
+
+.profileDetailsLeft ul{
+    display: block;
+    list-style: none;
+    padding: 2px;
+}
+
+.profileDetailsLeft ul li{
+    padding: 8px 20px;
+}
+
+.profileDetailsRight{
+    display: flex;
+}
+
+.profileDetailsRight ul{
+    display: block;
+    list-style: none;
+    padding: 2px;
+}
+
+.profileDetailsRight ul li{
+    padding: 8px 20px;
+}
+
+.appointments{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 0% 1% 1% 0%;
+    border-radius: 10px;
+}
+
+.appointmentsTitle{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.downContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 2% 1% 0% 1%;
+}
+
+.medicalRecords{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    margin: 0% 1% 0% 0%;
+    border-radius: 10px;
+}
+
+.medicalRecordsTitle{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.medicalBills{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 0% 1% 0% 0%;
+    border-radius: 10px;
+}
+
+.medicalBillsTitle{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.medications{
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    margin: 0% 1% 0% 0%;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.medicationsTitle{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.browseAllBtn{
+    height: 4vh;
+    width: 7vw;
+    border: none;
+    border-radius: 6px;
+    background-color: #24cbc8;
+    color: #FFFFFF;
+}
+
+.containerTitle{
+    font-size: 2.4vh;
+}
+.te{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+/*style for appointments table*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0% 2% 2% 2%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.appointmentTable{
+    display: flex;
+    justify-content: center;
+}
+
+.appointment {
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.medicalBillsTable{
+    display: flex;
+    justify-content: center;
+}
+
+.medicalRecordsTable{
+    display: flex;
+    justify-content: center;
+}
+
+.medicationsTable{
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1050px) {
+    html{
+        overflow: scroll;
+    }
+
+    .navbar{
+        top: 0;
+        width: 100%;
+        z-index: 9999;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 2px rgba(0, 0, 139, 0.1);
+    }
+
+    .sidebar{
+        display: none;
+    }
+
+   
+    .searchBox{
+        display: flex;
+    }
+
+    #search{
+        width: 30vw;
+        margin: 10% 5% 1% 5%;
+    }
+    
+    #time{
+        width: 20vw;
+        height: 2.5vh;
+        margin: 10% 0% 1% 15%;
+    }
+    
+    .profileTitle{
+        margin: 8% 0% 1% 5%;
+    }
+
+    .upperContainer{
+        display: block;
+    }
+
+    .downContainer{
+        display: block;
+    }
+
+    .downContainer{
+        display: block;
+    }
+
+    .medicalBills, .medications, .medicalRecords, .appointments, .profileDetails{
+        width: 120%;
+        margin: 0% 0% 3% 0%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .browseAllBtn{
+        width: 12vw;
+    }   
+}
+
+
+@media only screen and (max-width: 480px) {
+
+}
+
+
+
+
+

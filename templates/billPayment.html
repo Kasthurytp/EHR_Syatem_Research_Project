@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/newPatient.css'%}">
+</head> 
+<body>
+    <nav class="navbar">
+                <div>
+                    <a href="{% url 'doctorDashboard' %}"><img class="logo" src="{% static 'images/logo.png' %}"></a>
+                </div>
+                <div>
+                        <ul>
+                            <li class="location"><a href="#"><img src="{% static 'images/location.png' %}"></a></li>
+                            <li><a href="#">Sri Lanka</a></li>
+                        </ul>
+                </div>
+                <div>
+                        <ul>
+                                <li class="notification"><a href="#"><img src="{% static 'images/notification.png' %}"></a></li>
+                                <li class="email"><a href="#"><img src="{% static 'images/email.png' %}"></a></li>
+                         </ul>
+                </div>
+    </nav>
+
+    <div class="title_searchBtn">
+        <h2 class="createNewAccountHeading">Create New Payment</h2>
+        <a href="{% url 'doctor_searchPatient' %}"> <button class="searchUserBtn">Search User</button></a>
+    </div>
+
+    <form class="" method="post">
+        {% csrf_token %}
+            <div class="cNPBodyOuter">
+                <div class="cNPBodyInner">
+                    <h2 class="bItxt">Payment Details</h2>
+                        <div class="pDetails">
+                            <label>Doctor ID Number</label>
+                            <input type="text" id="doctor_id_num" name="doctor_id_num" required class="textbox" placeholder="DOC001">
+                        </div>
+                        <div class="pDetails">
+                            <label>Patient ID Number</label>
+                            <input type="text" id="patient_id_num" name="patient_id_num" required class="textbox" placeholder="PA001">
+                        </div>
+                        <div class="pDetails">
+                            <label>Date</label>
+                            <input type="text" id="date" name="date" required class="textbox" placeholder="2022-03-19">
+                        </div>
+                        <div class="pDetails">
+                            <label>Payment Amount (LKR)</label>
+                            <input type="text" id="visit_type" name="visit_type" required class="textbox" placeholder="LKR 500">
+                        </div>
+                        <div class="pDetails">
+                            <label>Payment Status</label>
+                            <input type="text" id="location" name="location" required class="textbox" placeholder="Paid">
+                        </div>
+                </div>
+                <div id="newPrescription">
+                    <input type="submit" class="saveBtn" value="Save">
+                    <button type="submit" class="cancelBtn">Cancel</button>
+                </div>
+
+            </div>
+</form>
+
+
+    <p class="copyRight">©2023 Electronic Health Record Syatem, HLens. All rights reserved.</p>
+
+</body>
+</html>

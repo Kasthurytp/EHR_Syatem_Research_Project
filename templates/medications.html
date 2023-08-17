@@ -1,0 +1,147 @@
+{% extends 'adminBase.html' %}
+{% load static %}
+
+{% block title %}
+    users
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/medications.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <!--Appointment Container starts-->
+    <div class="userProfileContainer">
+        <!--Sidebar starts-->
+        <div class="sidebar">
+            <div class="upperSidebar">
+                <div class="icon">
+                    <span><img src="{% static 'images/dashboard.png' %}"></span>
+                    <span>Profile</span>
+                </div>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/appointments.png' %}"></span>
+                    <span class="appointmentTxt">Appointments</span>
+                </div>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/bills.png' %}"></span>
+                    <span>Medical Bills</span>
+                </div>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/records.png' %}"></span>
+                    <span>Medical Records</span>
+                </div>
+
+                <div class="icon">
+                    <span><img src="{% static 'images/medications.png' %}"></span>
+                    <span>Medications</span>
+                </div>
+            </div>
+            <div class="lowerSidebar">
+                <div class="lIcon">
+                    <span><img src="{% static 'images/setting.png' %}"></span>
+                    <span>Setting</span>
+                </div>
+                <a href="{% url 'login' %}" style="color:black;">
+                    <div class="lIcon">
+                        <span><img src="{% static 'images/logout.png' %}"></span>
+                        <span class="logout">Log out</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div>
+        <!--Sidebar starts-->
+            <!--search box and date & time box starts-->
+            <div class="searchBox">
+                <span> <input type="text" id="search" name="username" required class="searchBox" placeholder="Search....."></button></span>
+                <span> <input type="text" id="time" name="date&time" required class="searchBox" placeholder="{{ formatted_datetime }}"></button></span> 
+            </div>
+            <!--search box and date & time box ends-->
+            <!--Appointment Title starts-->
+            <div class="profileTitle_newAppointmentBtn">
+                <div class="profileTitle">
+                    <h2>Medications</h2>
+                </div>
+            </div>
+            <!--Appointment Title ends-->
+
+    <!--Appointment body starts-->
+    <div class="appointmentTable" id="container1">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#</th>
+                        <th>Medication Name</th>
+                        <th>Dose</th>
+                        <th>Frequency</th>
+                        <th>Quantity</th>
+                        <th>Refills</th>
+                        <th>Condition</th>
+                        <th>Provider</th>
+                        <th>Prescribed</th>
+                        <th>Renew By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{appointment.id}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{appointment.VisitType}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{appointment.Date}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                 <p class="appointment"> {{appointment.Provider}}</p>
+                            {% endfor %}</td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{ appointment.AppointmentDate }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{ appointment.AppointmentDate }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{ appointment.AppointmentDate }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{ appointment.AppointmentDate }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{ appointment.AppointmentDate }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for appointment in appointment%}
+                                <p class="appointment">{{ appointment.AppointmentDate }}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Appointment Container ends-->
+{% endblock %}

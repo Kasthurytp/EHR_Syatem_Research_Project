@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+</head> 
+<body>
+    <div class="overlay"></div>
+    <nav class="navbar">
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <ul>
+              <li class="language"><a href="#"><img src="{% static 'images/location.png' %}"></a></li>
+              <li><a href="#">Sri Lanka</a></li>
+            </ul>
+    </nav>
+
+    <div class="lg_body">
+        <div class="leftContainer">
+            <img class="heartCareImg" src="{% static 'images/heart-care-1040250_1280-removebg-preview.png' %}"><br>
+            <p class="welcomeTxt">Welcome Back to secure EHR !</p>
+            <p>Our secure EHR system is designed to streamline and protect your electronic health records.
+                    It allows healthcare professionals to securely store, manage, and access patient information
+                    in a convenient and efficient manner. With robust data encryption and strict privacy controls,
+                    we prioritize the confidentiality and integrity of your health data.
+            </p>
+            <a>Don't Have an account ? Contact Your Admin</a> <br>
+            <p class="copyRight">©2023 Electronic Health Record System, HLens. All rights reserved.</p>
+        </div>
+        <div id="adminLoginContainer">
+                <form action="login" method="POST">
+                 
+                        {% for message in messages %}
+                        <h3 style="color: rgb(153, 33, 33); font-size: 18px; text-align: center;" > {{message}} </h3>
+                        {% endfor %}
+                   
+                    {% csrf_token %}
+                    <img class="animatedKey" src="{% static 'images/private-key-generator.gif' %}">
+                    <h1> LOGIN</h1>
+                    <label for="username">Username or Email :</label>
+                    <input type="text" id="username" name="username" placeholder="username or Email" required><br>
+                    
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required><br>
+
+                    <div class="form-group">
+                        <label for="user-type">Login as : </label>
+                        <select name="user_type" id="user-type" class="form-control" required>
+                          <option value="admin">Admin</option>
+                          <option value="doctor">Doctor</option>
+                        </select>
+                      </div>
+                  
+                    <a class="fogotPWD">Forgot Password ?</a>
+                    <button type="submit" class="adminLoginBtn">LOG IN</button>
+                  </form>
+                </div>
+    </div>    
+
+</body>
+</html>

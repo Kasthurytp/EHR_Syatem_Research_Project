@@ -1,0 +1,71 @@
+<!--Doctor Container starts-->
+<div class="userProfileContainer">
+       
+    <!--Doctor body starts-->
+    <div class="appointmentTable" id="container1">
+        <table>
+                <thead>
+                    <tr>
+                        <th class="th1">#ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Sex</th>
+                        <th>NIC</th>
+                        <th>Mobile number</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            {% for doctor in doctors%}
+                                <p class="appointment">{{doctor.id_num}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{doctor.first_name}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{doctor.last_name}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{doctor.dob}}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                 <p class="appointment"> {{doctor.sex}}</p>
+                            {% endfor %}</td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{ doctor.nic }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{ doctor.mobile_number }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{ doctor.email }}</p>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for doctor in doctors %}
+                                <p class="appointment">{{ doctor.address }}</p>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+<!--Doctor Container ends-->
